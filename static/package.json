@@ -1,0 +1,13 @@
+{
+  "name": "NikeSneakersDemo",
+  "version": "1.0.0",
+  "description": "Nick Sneakers Sell",
+  "main": "index.js",
+  "repository": "git@github.com:yaoang/NikeSneakersDemo.git",
+  "author": "yaoang <fyan888@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "react": "^18.0.0"
+  }
+}

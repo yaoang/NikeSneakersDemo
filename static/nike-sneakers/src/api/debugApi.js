@@ -20,34 +20,46 @@ const sneakers = [{
     name: catelog.MAX_95,
     minPrice: 120.00,
     maxPrice: 150.00,
+    price: 123,
+    currentStatus: STATUS.MODERATE_STATE,
 }, {
     id: index ++,
     name: catelog.MAX_97,
     minPrice: 5.00,
     maxPrice: 150.00,
+    price: 155,
+    currentStatus: STATUS.WAIT_FOR_DISCOUNT,
 }, {
     id: index ++,
     name: catelog.MAX_PRE,
     minPrice: 120.00,
     maxPrice: 160.00,
+    price: 117,
+    currentStatus: STATUS.TIME_TO_BUY,
 }, {
     id: index ++,
     name: catelog.MAX_270,
     minPrice: 100.00,
     maxPrice: 130.00,
+    price: 123,
+    currentStatus: STATUS.MODERATE_STATE,
 }, {
     id: index ++,
     name: catelog.RENEW_RIDE,
     minPrice: 180.00,
     maxPrice: 200.00,
+    price: 123,
+    currentStatus: STATUS.TIME_TO_BUY,
 }, {
     id: index ++,
     name: catelog.MAX_90,
     minPrice: 120.00,
     maxPrice: 150.00,
+    price: 153,
+    currentStatus: STATUS.WAIT_FOR_DISCOUNT,
 }]
 
-module.exports = {
+export {
     catelog,
     STATUS,
     sneakers,

@@ -8,7 +8,7 @@ import {
 const getAll = async (isDebug) => {
     console.log('calling getAll API*****************')
     if (isDebug) {
-        return sneakers
+        return {data: sneakers}
     }
 
     const list = await http.get('/api/sneakers/getAll')

@@ -1,17 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  margin-top: 5vmin;
+  height: 30vmin;
   pointer-events: none;
+  background: transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -41,9 +48,32 @@
   list-style: none;
   display: flex;
   flex-direction: row;
+  /* margin: 10px 0; */
+  padding: 0;
 }
 
 .sneaker-row ul li {
   display: inline-block;
-  flex: 1;
+  flex: 10;
+  border-bottom: solid 1px #282c34;
+}
+
+.sneaker-row ul li button {
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: cadetblue;
+  color: #fff;
+  font-weight: 900;
+  vertical-align: top;
+  margin-bottom: 10px;
+  width: 70px;
+}
+
+.sneaker-row ul li button:hover {
+  background-color: #282c34;
+}
+
+.sneaker-row ul li button:active {
+  background-color: cadetblue;
 }

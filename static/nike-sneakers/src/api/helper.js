@@ -1,6 +1,6 @@
 import axios from 'axios'
 const instatnce = axios.create({
-    timeout: 10,
+    timeout: 10000,
 })
 
 instatnce.interceptors.request.use(function(config) {

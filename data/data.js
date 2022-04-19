@@ -20,31 +20,37 @@ const sneakers = [{
     name: catelog.MAX_95,
     minPrice: 120.00,
     maxPrice: 150.00,
+    image: 'max95.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_97,
     minPrice: 5.00,
     maxPrice: 150.00,
+    image: 'max97.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_PRE,
     minPrice: 120.00,
     maxPrice: 160.00,
+    image: 'maxPreDay.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_270,
     minPrice: 100.00,
     maxPrice: 130.00,
+    image: 'max270.jpg'
 }, {
     id: index ++,
     name: catelog.RENEW_RIDE,
     minPrice: 180.00,
     maxPrice: 200.00,
+    image: 'renewRide3.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_90,
     minPrice: 120.00,
     maxPrice: 150.00,
+    image: 'max90.jpg'
 }]
 
 module.exports = {

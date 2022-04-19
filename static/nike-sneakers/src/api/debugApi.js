@@ -22,6 +22,7 @@ const sneakers = [{
     maxPrice: 150.00,
     price: 123,
     currentStatus: STATUS.MODERATE_STATE,
+    image: 'max95.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_97,
@@ -29,6 +30,7 @@ const sneakers = [{
     maxPrice: 150.00,
     price: 155,
     currentStatus: STATUS.WAIT_FOR_DISCOUNT,
+    image: 'max97.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_PRE,
@@ -36,6 +38,7 @@ const sneakers = [{
     maxPrice: 160.00,
     price: 117,
     currentStatus: STATUS.TIME_TO_BUY,
+    image: 'maxPreDay.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_270,
@@ -43,6 +46,7 @@ const sneakers = [{
     maxPrice: 130.00,
     price: 123,
     currentStatus: STATUS.MODERATE_STATE,
+    image: 'max270.jpg'
 }, {
     id: index ++,
     name: catelog.RENEW_RIDE,
@@ -50,6 +54,7 @@ const sneakers = [{
     maxPrice: 200.00,
     price: 123,
     currentStatus: STATUS.TIME_TO_BUY,
+    image: 'renewRide3.jpg'
 }, {
     id: index ++,
     name: catelog.MAX_90,
@@ -57,6 +62,7 @@ const sneakers = [{
     maxPrice: 150.00,
     price: 153,
     currentStatus: STATUS.WAIT_FOR_DISCOUNT,
+    image: 'max90.jpg'
 }]
 
 export {

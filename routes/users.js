@@ -26,7 +26,7 @@ function get(req, res) {
     )
 }
 
-modal.exports = {
+module.exports = {
     get,
     getAll,
 }

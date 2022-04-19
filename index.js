@@ -25,10 +25,10 @@ function makeHandlerAwareOfAsyncErrors(handler) {
     };
 }
 
+app.use('/', express.static(__dirname + '/static/nike-sneakers/build'));
+
 for (const [routeName, routeController] of Object.entries(routes)) {
-    // console.log(routeName)
-    // console.log(routeController)
-    if(routeName === "sneakers") {
+    if(routeName === 'sneakers') {
         app.get('/api/sneakers/getAll', makeHandlerAwareOfAsyncErrors(routeController.getAll))
         app.get(`/api/sneakers/:id`, makeHandlerAwareOfAsyncErrors(routeController.get))
         app.get('/api/sneakers/price/:id', makeHandlerAwareOfAsyncErrors(routeController.getPrice))

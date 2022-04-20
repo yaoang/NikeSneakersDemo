@@ -1,7 +1,7 @@
 # Nike Sneakers Shop Demo
 > Author Ang Yao
 
-## Demo for selling Nike sneakers
+## Demo of Nike sneakers Shop
 
 ### How to install libraries?
 ```

@@ -6,13 +6,16 @@ const config = {
   ],
   "testPathIgnorePatterns": [
     "/node_modules/",
-    "/static/"
+      "/static"
   ],
   roots: [
     "<rootDir>"
   ],
   testRegex: "",
-  rootDir: null
+  rootDir: null,
+  "moduleNameMapper": {
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+  }
 }
 
 module.exports = config

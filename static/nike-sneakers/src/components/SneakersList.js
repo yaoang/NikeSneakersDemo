@@ -33,14 +33,14 @@ export function SneakersList() {
     }, [])
 
     const getListRows = () => {
-        // console.log(`list = ${JSON.stringify(list)}`)
+        console.log(`list = ${JSON.stringify(list)}`)
         return list && list.map(row =>
             <SneakersRow
                 key={row.id}
                 id={row.id}
                 name={row.name}
                 price={row.price}
-                currentStatus={row.currentStatus}
+                currentStatus={row.status}
                 image={row.image}
                 onSetImg={setCurrentImg}
             ></SneakersRow>

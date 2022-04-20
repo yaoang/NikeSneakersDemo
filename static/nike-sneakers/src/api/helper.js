@@ -4,7 +4,7 @@ const instatnce = axios.create({
 })
 
 instatnce.interceptors.request.use(function(config) {
-    console.log(config)
+    // console.log(config)
     return config
 }, function(err) {
     return Promise.reject(err)

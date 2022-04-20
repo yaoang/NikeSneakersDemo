@@ -1,6 +1,6 @@
 const config = {
   verbose: true,
-  "testPathDirs": ["src"],
+  "testPathDirs": ["routes"],
   testMatch: [
     "**/?(*.)+(spec|test).js"
   ],

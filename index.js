@@ -1,7 +1,8 @@
 var express = require('express')
 var http = require('http')
 // var debug = require('debug')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
+const {getHasPermission} = require('./routes/promise')
 
 const app = express()
 var port = process.env.PORT || '3000'
@@ -27,11 +28,18 @@ function makeHandlerAwareOfAsyncErrors(handler) {
 
 app.use('/', express.static(__dirname + '/static/nike-sneakers/build'));
 
+const authMiddleware = (req, res, next) => {
+    if(!getHasPermission(req)) {
+        return res.status(403).end()
+    }
+    next()
+};
+
 for (const [routeName, routeController] of Object.entries(routes)) {
     if(routeName === 'sneakers') {
-        app.get('/api/sneakers/getAll', makeHandlerAwareOfAsyncErrors(routeController.getAll))
-        app.get(`/api/sneakers/:id`, makeHandlerAwareOfAsyncErrors(routeController.get))
-        app.get('/api/sneakers/price/:id', makeHandlerAwareOfAsyncErrors(routeController.getPrice))
+        app.get('/api/sneakers/getAll', authMiddleware, makeHandlerAwareOfAsyncErrors(routeController.getAll))
+        app.get(`/api/sneakers/:id`, authMiddleware, makeHandlerAwareOfAsyncErrors(routeController.get))
+        app.get('/api/sneakers/prices/:id', authMiddleware, makeHandlerAwareOfAsyncErrors(routeController.getPrices))
     }
 }
 

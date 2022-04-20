@@ -1,5 +1,5 @@
 // import { render, screen } from '@testing-library/react';
-import { render, fireEvent } from './test/test-utils';
+import { render, fireEvent, store } from './test/test-utils';
 import App from './App';
 import React from 'react'
 // import { Provider } from 'react-redux'
@@ -26,12 +26,18 @@ test('renders list', async () => {
   expect(cell).toBeInTheDocument()
 });
 
-test('click button', async () => {
+test('should save buy sneaker when click button ', async () => {
   mockApi()
   const component = render(<App />);
   // console.log(component)
-  const button = await component.findByText('Buy')
-  // console.log(cell)
+  const button = await component.findAllByText('Buy')
+  // console.log(button[0])
   // expect(cell).toBeInTheDocument()
-  fireEvent.click(button)
+  fireEvent.click(button[0])
+
+  const {sneakers} = store.getState()
+  const {buy} = sneakers
+  const {id, name, price, currentStatus} = buy
+  expect(id).toEqual(1)
+  expect(name).toEqual('Nike Air Max 95 SE')
 })

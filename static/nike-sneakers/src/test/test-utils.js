@@ -13,4 +13,4 @@ const reduxRender = (ui, options = {}) =>
 
 export * from "@testing-library/react"
 
-export { reduxRender as render }
+export { reduxRender as render, store }

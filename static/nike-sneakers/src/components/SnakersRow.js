@@ -1,8 +1,10 @@
 import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setBuySneaker } from "../store/sneakersSlice";
 
 export function SneakersRow({ id, name, price, image, currentStatus, onSetImg }) {
+    const buy = useSelector((state) => state.sneakers.buy)
+
     const buySneaker = useCallback(() => {
         console.log(`Going to buy ${name}, price is ${price}, status is ${currentStatus} image is ${image}`)
         dispatch(setBuySneaker({
@@ -18,7 +20,13 @@ export function SneakersRow({ id, name, price, image, currentStatus, onSetImg })
         onSetImg(require(`../images/${image}`))
     }
 
-    return (<div className="sneaker-row">
+    const getRowClassName = () => {
+        const {id: buyId} = buy
+        // console.log('getting row class, id=', id, ', buyId = ', buyId)
+        return 'sneaker-row ' + (buyId === id ? 'buy' : '')
+    }
+
+    return (<div className={getRowClassName()}>
         <ul onMouseOver={freshImg}>
             {/* <li className="row-id">{id}</li> */}
             <li>{name}</li>

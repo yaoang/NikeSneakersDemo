@@ -2,9 +2,6 @@
 import { render, fireEvent, store } from './test/test-utils';
 import App from './App';
 import React from 'react'
-// import { Provider } from 'react-redux'
-// import store from '../src/store/index'
-// import API from './api/index'
 import nock from 'nock'
 import {sneakers} from './api/debugApi'
 

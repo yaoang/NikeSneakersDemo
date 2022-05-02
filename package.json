@@ -2,13 +2,13 @@
   "name": "NikeSneakersDemo",
   "version": "1.0.0",
   "description": "Nick Sneakers Sell",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "git@github.com:yaoang/NikeSneakersDemo.git",
   "author": "yaoang <fyan888@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build-fe": "cd static/nike-sneakers && npm run build",
-    "start": "npm run build-fe && node index.js",
+    "start": "npm run build-fe && node server.js",
     "test-fe": "cd static/nike-sneakers && yarn test",
     "test": "jest && npm run test-fe",
     "install-all": "yarn install && cd static/nike-sneakers && yarn install"

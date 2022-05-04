@@ -44,3 +44,5 @@ and Press `a`
 yarn start
 ```
 Then you can open [http://localhost:3000](http://localhost:3000)
+
+![Index page](index.page.png)

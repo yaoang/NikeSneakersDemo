@@ -14,6 +14,7 @@ export const sneakersSlice = createSlice({
             state.list = action.payload
         },
         setBuySneaker: (state, action) => {
+            console.log(action.payload)
             state.buy = action.payload
         }
     }

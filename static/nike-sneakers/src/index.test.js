@@ -1,4 +1,4 @@
-
+import React from 'react'
 const createMockRender = function () {
     return {
         render: jest.fn()
@@ -10,7 +10,6 @@ jest.mock('react-dom/client', () => ({
 }))
 
 const Index = require('./index').default
-import React from 'react'
 
 describe('Index should be created', function () {
     test('renders Index', async () => {

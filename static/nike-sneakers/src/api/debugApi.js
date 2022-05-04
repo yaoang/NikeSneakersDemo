@@ -21,7 +21,7 @@ const sneakers = [{
     minPrice: 120.00,
     maxPrice: 150.00,
     price: 123,
-    currentStatus: STATUS.MODERATE_STATE,
+    status: STATUS.MODERATE_STATE,
     image: 'max95.jpg'
 }, {
     id: index ++,
@@ -29,7 +29,7 @@ const sneakers = [{
     minPrice: 5.00,
     maxPrice: 150.00,
     price: 155,
-    currentStatus: STATUS.WAIT_FOR_DISCOUNT,
+    status: STATUS.WAIT_FOR_DISCOUNT,
     image: 'max97.jpg'
 }, {
     id: index ++,
@@ -37,7 +37,7 @@ const sneakers = [{
     minPrice: 120.00,
     maxPrice: 160.00,
     price: 117,
-    currentStatus: STATUS.TIME_TO_BUY,
+    status: STATUS.TIME_TO_BUY,
     image: 'maxPreDay.jpg'
 }, {
     id: index ++,
@@ -45,7 +45,7 @@ const sneakers = [{
     minPrice: 100.00,
     maxPrice: 130.00,
     price: 123,
-    currentStatus: STATUS.MODERATE_STATE,
+    status: STATUS.MODERATE_STATE,
     image: 'max270.jpg'
 }, {
     id: index ++,
@@ -53,7 +53,7 @@ const sneakers = [{
     minPrice: 180.00,
     maxPrice: 200.00,
     price: 123,
-    currentStatus: STATUS.TIME_TO_BUY,
+    status: STATUS.TIME_TO_BUY,
     image: 'renewRide3.jpg'
 }, {
     id: index ++,
@@ -61,7 +61,7 @@ const sneakers = [{
     minPrice: 120.00,
     maxPrice: 150.00,
     price: 153,
-    currentStatus: STATUS.WAIT_FOR_DISCOUNT,
+    status: STATUS.WAIT_FOR_DISCOUNT,
     image: 'max90.jpg'
 }]
 

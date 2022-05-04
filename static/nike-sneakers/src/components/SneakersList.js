@@ -3,10 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { saveAllData } from "../store/sneakersSlice";
 import { SneakersRow } from "./SnakersRow";
 import { getAll } from "../api";
-import logo from '../images/nike.png';
-
-// const img = require('../images/nike.png')
-// console.log(img)
+// import logo from '../images/nike.png';
 
 const IS_DEBUGGER = false
 
@@ -33,7 +30,7 @@ export function SneakersList() {
     }, [])
 
     const getListRows = () => {
-        console.log(`list = ${JSON.stringify(list)}`)
+        console.log(JSON.stringify(list))
         return list && list.map(row =>
             <SneakersRow
                 key={row.id}

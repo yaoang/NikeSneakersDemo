@@ -3,7 +3,7 @@ import { render, fireEvent, store } from './test/test-utils';
 import App from './App';
 import React from 'react'
 import nock from 'nock'
-import {sneakers} from './api/debugApi'
+import {sneakers, STATUS} from './api/debugApi'
 
 function mockApi() {
   const scope = nock('http://localhost')
@@ -14,27 +14,38 @@ function mockApi() {
   return scope
 }
 
-test('renders list', async () => {
-  mockApi()
-  const component = render(<App />);
-  // console.log(component)
-  const cell = await component.findByText('Nike Renew Ride 3')
-  // console.log(cell)
-  expect(cell).toBeInTheDocument()
-});
+// const createMockRender = function () {
+//   return {
+//     render: jest.fn(() => ({}))
+//   }
+// }
+//
+// jest.mock('react-dom/client', () => ({
+//   createRoot: jest.fn(createMockRender)
+// }))
 
-test('should save buy sneaker when click button ', async () => {
-  mockApi()
-  const component = render(<App />);
-  // console.log(component)
-  const button = await component.findAllByText('Buy')
-  // console.log(button[0])
-  // expect(cell).toBeInTheDocument()
-  fireEvent.click(button[0])
+const Index = require('./index').default
 
-  const {sneakers} = store.getState()
-  const {buy} = sneakers
-  const {id, name, price, currentStatus} = buy
-  expect(id).toEqual(1)
-  expect(name).toEqual('Nike Air Max 95 SE')
+describe('App', () => {
+  test('renders list', async () => {
+    mockApi()
+    const component = render(<App />);
+    const cell = await component.findByText('Nike Renew Ride 3')
+    expect(cell).toBeInTheDocument()
+  });
+
+  test('should save buy sneaker when click button ', async () => {
+    mockApi()
+    const component = render(<App />)
+    const button = await component.findAllByText('Buy')
+    fireEvent.click(button[0])
+
+    const {sneakers} = store.getState()
+    const {buy} = sneakers
+    const {id, name, price, currentStatus} = buy
+    expect(id).toEqual(1)
+    expect(name).toEqual('Nike Air Max 95 SE')
+    expect(price > 0).toBeTruthy()
+    expect(currentStatus).toEqual(STATUS.MODERATE_STATE)
+  })
 })

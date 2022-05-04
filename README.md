@@ -1,7 +1,23 @@
 # Nike Sneakers Shop Demo
-> Author Ang Yao
+> Author: Ang Yao
 
 ## Demo of Nike sneakers Shop
+
+### Directory and Files
+Server Entrance
+```
+./server.js
+```
+
+Front End Directory
+```
+./static
+```
+
+Test Files
+```
+[FileName].test.js
+```
 
 ### How to install libraries?
 ```

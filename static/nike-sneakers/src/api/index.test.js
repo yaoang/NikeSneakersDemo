@@ -25,7 +25,6 @@ describe('api/index', () => {
         mockApi()
 
         const response = await getAll(false)
-        // console.log(response)
         const {data, status} = response
         const length = sneakers.length
         expect(data).toHaveLength(length)

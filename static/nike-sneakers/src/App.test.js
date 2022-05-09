@@ -24,7 +24,7 @@ function mockApi() {
 //   createRoot: jest.fn(createMockRender)
 // }))
 
-const Index = require('./index').default
+// const Index = require('./index').default
 
 describe('App', () => {
   test('renders list', async () => {

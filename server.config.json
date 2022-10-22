@@ -1,0 +1,9 @@
+{
+    "database": {
+        "username": "4EYLrYy5PdniwAR.root",
+        "password": "9X1Nm77l2idMd1um",
+        "host": "gateway01.us-west-2.prod.aws.tidbcloud.com",
+        "port": "4000",
+        "dbname": "nikeShoes"
+    }
+}

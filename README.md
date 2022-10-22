@@ -1,48 +1,22 @@
-# Nike Sneakers Shop Demo
-> Author: Ang Yao
+#### 1. Setup your db
 
-## Demo of Nike sneakers Shop
+Your `DATABASE_URL` should look like `mysql://<User>:<Password>@<Host>:<Port>/<dbname>`
 
-### Directory and Files
-Server Entrance
-```
-./server.js
-```
+#### 2. Import table structures and data
 
-Front End Directory
-```
-./static
-```
+Run `schema.sql` to create database and tables, and then run `data.sql` to insert data.
 
-Test Files
-```
-[FileName].test.js
+
+#### 3. How to Run server
+> run dev server with next
+
+```bash
+npm run dev
 ```
 
-### How to install libraries?
-```
-npm run install-all
-```
-### How to build project?
-```
-yarn run build-fe
-```
+> Build and run
 
-### How to run test?
+```bash
+npm run build
+node server.js
 ```
-yarn test
-```
-
-### How to test front-end?
-```
-yarn test-fe
-```
-and Press `a`
-
-### How to start the website?
-```
-yarn start
-```
-Then you can open [http://localhost:3000](http://localhost:3000)
-
-![Index page](index.page.png)

@@ -1,0 +1,108 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity", "interactiveTransactions"]
+}
+
+// TiDB is highly compatible with the MySQL 5.7 protocol and the common features 
+// and syntax of MySQL 5.7.
+//
+// TiDB currently does not support foreign key constraints. If you need to use the feature of 
+// referential integrity, you can use the application layer implementation of prisma.
+//
+// Refercene: https://www.prisma.io/docs/concepts/components/prisma-schema/relations/referential-integrity#handling-the-referential-integrity-in-prisma
+// Related Issue [WIP]: https://github.com/pingcap/tidb/issues/18209
+// 
+// More descriptions about MySQL compatibility:
+// Refercene: https://docs.pingcap.com/tidb/dev/mysql-compatibility
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+// 
+// https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
+
+//model Author {
+  //id          BigInt   @id
+  //name        String   @db.VarChar(100)
+  //gender      Boolean?
+  //birthYear   Int?     @db.SmallInt @map("birth_year")
+  //deathYear   Int?     @db.SmallInt @map("death_year")
+  //books       BookAuthor[]
+	//@@map("authors")
+//}
+
+//model BookAuthor {
+  //shoes    shoes   @relation(fields: [shoeId], references: [id])
+  //shoeId   String @map("shoe_id")
+  //author   Author @relation(fields: [authorId], references: [id])
+  //authorId BigInt @map("author_id")
+
+  //@@id([shoeId, authorId])
+	//@@map("book_authors")
+//}
+
+model shoes {
+  id           String     @id
+  title        String     @db.VarChar(100)
+  type         ShoeType
+  publishedAt  DateTime   @db.DateTime(0) @map("published_at")
+  stock        Int        @default(0)
+  price        Decimal    @default(0.0) @db.Decimal(15, 2)
+  //authors      BookAuthor[]
+  ratings      Rating[]
+  orders       Order[]
+	@@map("shoes")
+}
+
+model Order {
+  id          BigInt   @id @default(autoincrement())
+  shoes       shoes     @relation(fields: [shoeId], references: [id])
+  shoeId      String   @map("shoe_id")
+  user        User     @relation(fields: [userId], references: [id])
+  userId      BigInt   @map("user_id")
+  quality     Int      @db.TinyInt
+  orderedAt   DateTime @default(now()) @db.DateTime(0) @map("ordered_at")
+
+  @@index([shoeId])
+	@@map("orders")
+}
+
+model Rating {
+  shoes   shoes     @relation(fields: [shoeId], references: [id])
+  shoeId  String   @map("shoe_id")
+  user    User     @relation(fields: [userId], references: [id])
+  userId  BigInt   @map("user_id")
+  score   Int      @db.TinyInt
+  ratedAt DateTime @default(now()) @db.DateTime(0) @map("rated_at")
+
+  @@id([shoeId, userId])
+  @@unique([shoeId, userId], map: "uniq_book_user_idx")
+	@@map("ratings")
+}
+
+model User {
+  id       BigInt   @id
+  balance  Decimal  @default(0.0) @db.Decimal(15, 2)
+  nickname String   @unique(map: "nickname") @db.VarChar(100)
+  ratings  Rating[]
+  orders   Order[]
+
+	@@map("users")
+}
+
+// Because special characters cannot be used in the schema definition of the data model.
+// We use `_nbsp_` to represent one space and use `_amp_` to represent `&`.
+
+enum ShoeType {
+  Jordan
+  Running
+  Basketball
+  Football
+  Training_nbsp__amp__nbsp_Gym   @map("Training & Gym")
+  Athletics
+  Walking
+	@@map("shoes_type")
+}

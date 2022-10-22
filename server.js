@@ -1,84 +1,48 @@
-var express = require('express')
-var http = require('http')
-// var debug = require('debug')
-const bodyParser = require('body-parser')
-const {getHasPermission} = require('./routes/promise')
+const express = require("express");
+const next = require("next");
 
-const app = express()
-var port = process.env.PORT || '3000'
-app.set('port', port);
+const port = parseInt(process.env.PORT, 10) || 3000;
+const dev = process.env.NODE_ENV === "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
+// const {createProxyMiddleware} = require('http-proxy-middleware');
+const config = require('./server.config.json');
+// const { networkInterfaces } = require('os');
+// console.log(JSON.stringify(nets))
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+process.env.DATABASE_URL = `mysql://${config.database.username}:${config.database.password}@${config.database.host}:${config.database.port}/${config.database.dbname}`
 
-const routes = {
-    sneakers: require('./routes/sneakers'),
-    users: require('./routes/users')
-}
+app.prepare().then(() => {
+  const server = express();
+  // server.use('/seed', createProxyMiddleware({ target: 'https://picsum.photos', changeOrigin: true }));
 
-function makeHandlerAwareOfAsyncErrors(handler) {
-    return async function(req, res, next) {
-        try {
-            await handler(req, res);
-        } catch (error) {
-            next(error);
-        }
-    };
-}
+  server.get("*", (req, res) => {
+    return handle(req, res);
+  });
 
-app.use('/', express.static(__dirname + '/static/nike-sneakers/build'));
+  server.listen(port, err => {
+    if (err) throw err;
 
-const authMiddleware = (req, res, next) => {
-    if(!getHasPermission(req)) {
-        return res.status(403).end()
-    }
-    next()
-};
+    //   const nets = networkInterfaces()
+    //   let address = ''
+    //   for (const name of Object.keys(nets)) {
+    //     for (const net of nets[name]) {
+    //         const familyV4Value = typeof net.family === 'string' ? 'IPv4' : 4
+    //         if (net.family === familyV4Value && !net.internal) {
+    //             // console.log(net)
+    //             address = net.address
+    //             break
+    //         }
+    //     }
+    //     if (address) {
+    //       break
+    //     }
+    // }
+    // console.log(`> Ready on http://${address}:${port}`);
 
-for (const [routeName, routeController] of Object.entries(routes)) {
-    if(routeName === 'sneakers') {
-        app.get('/api/sneakers/getAll', authMiddleware, makeHandlerAwareOfAsyncErrors(routeController.getAll))
-        app.get(`/api/sneakers/:id`, authMiddleware, makeHandlerAwareOfAsyncErrors(routeController.get))
-        app.get('/api/sneakers/prices/:id', authMiddleware, makeHandlerAwareOfAsyncErrors(routeController.getPrices))
-    }
-}
+    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+      console.log(`> Ready on http://${add}:${port}`);
+    })
 
-var server = http.createServer(app);
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-function onError(error) {
-    if (error.syscall !== 'listen') {
-        throw error;
-    }
-
-    var bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
-
-    // handle specific listen errors with friendly messages
-    switch (error.code) {
-        case 'EACCES':
-            console.error(bind + ' requires elevated privileges');
-            process.exit(1);
-            break;
-        case 'EADDRINUSE':
-            console.error(bind + ' is already in use');
-            process.exit(1);
-            break;
-        default:
-            throw error;
-    }
-}
-
-function onListening() {
-    var addr = server.address();
-    var bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
-    console.log('Listening on ', bind);
-}
-
-module.exports = server
+  });
+});

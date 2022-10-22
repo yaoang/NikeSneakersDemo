@@ -1,0 +1,30 @@
+{
+  "name": "NikeSneakersDemo",
+  "version": "1.0.0",
+  "description": "Nick Sneakers Sell",
+  "main": "server.js",
+  "repository": "git@github.com:yaoang/NikeSneakersDemo.git",
+  "author": "yaoang <fyan888@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build-fe": "cd static/nike-sneakers && npm run build",
+    "start": "npm run build-fe && node server.js",
+    "test-fe": "cd static/nike-sneakers && yarn test",
+    "test": "jest && npm run test-fe",
+    "install-all": "yarn install && cd static/nike-sneakers && yarn install"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.16.7",
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "jest": "^27.5.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "identity-obj-proxy": "^3.0.0",
+    "regenerator-runtime": "^0.13.9"
+  }
+}

@@ -1,30 +1,37 @@
 {
-  "name": "NikeSneakersDemo",
-  "version": "1.0.0",
-  "description": "Nick Sneakers Sell",
-  "main": "server.js",
-  "repository": "git@github.com:yaoang/NikeSneakersDemo.git",
-  "author": "yaoang <fyan888@gmail.com>",
-  "license": "MIT",
+  "name": "tidb-prisma-vercel-demo",
   "scripts": {
-    "build-fe": "cd static/nike-sneakers && npm run build",
-    "start": "npm run build-fe && node server.js",
-    "test-fe": "cd static/nike-sneakers && yarn test",
-    "test": "jest && npm run test-fe",
-    "install-all": "yarn install && cd static/nike-sneakers && yarn install"
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "server": "set DATABASE_URL='mysql://4EYLrYy5PdniwAR.root:78ttstts@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/nikeShoes' && node server.js",
+    "vercel-build": "prisma generate && next build",
+    "prisma:generate": "prisma generate",
+    "build-and-serve": "npm run build && node server"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.16.7",
-    "body-parser": "^1.20.0",
-    "express": "^4.17.3",
-    "jest": "^27.5.1"
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.93",
+    "@mui/material": "^5.9.2",
+    "@prisma/client": "^4.5.0",
+    "axios": "^0.27.2",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "next": "12.2.2",
+    "notistack": "^2.0.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "recoil": "^0.7.5"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-jsx": "^7.16.7",
-    "@babel/preset-env": "^7.16.11",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
-    "identity-obj-proxy": "^3.0.0",
-    "regenerator-runtime": "^0.13.9"
+    "@types/node": "^18.6.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.2",
+    "prisma": "^4.5.0",
+    "typescript": "4.7.4"
   }
 }
